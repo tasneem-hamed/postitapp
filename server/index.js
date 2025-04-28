@@ -4,6 +4,7 @@ import cors from "cors";
 import UserModel from "./Models/UserModel.js";
 import bcrypt from "bcrypt";
 import PostModel from "./Models/Posts.js";
+import * as ENV from "./config.js";
 
 const app = express();
 app.use(express.json());
@@ -11,7 +12,7 @@ app.use(cors());
 
 //Database connection
 const connectString =
-"mongodb+srv://admin:admin123@cluster0.3g07eug.mongodb.net/postITDb?retryWrites=true&w=majority&appName=Cluster0"  
+"mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASSWORD}@${ENV.DB_CLUSTER}/${ENV.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0"  
 //"mongodb+srv://admin:admin@cluster0.pjjusfk.mongodb.net/postITDb?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(connectString, {
