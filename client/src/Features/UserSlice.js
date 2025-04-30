@@ -2,10 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { UsersData } from "../Exampledata";
 import axios from "axios";
 
+import * as ENV from "../config";
+
+
 //const initialState = { value: [] }; //list of user is an object with empty array as initial value
 const initialState = {
   value: UsersData,
-  logged: "Anthony",
+  logged: "Tasneem",
 
   user: {},
   isLoading: false,
@@ -20,7 +23,8 @@ export const registerUser = createAsyncThunk(
     try {
       //sends a POST request to the server along the request body object
       //const response = await axios.post("http://localhost:3001/registerUser", {
-      const response = await axios.post(`${ENV.SERVER_URL}/registerUser`, {
+        const response = await axios.post(`${ENV.SERVER_URL}/registerUser`, {
+
         name: userData.name,
         email: userData.email,
         password: userData.password,
